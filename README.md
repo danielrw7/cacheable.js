@@ -1,6 +1,8 @@
 # cacheable.js
 [cacheable.js](https://github.com/danielrw7/cacheable.js/blob/master/cacheable.js) - Function wrapper for caching function results based on the function arguments.
 
+_I realized after making this that this already exists with memoization (for example: [memoizee](https://github.com/medikoo/memoizee))._
+
 ## Usage
 ```javascript
 function add(callback, a, b) {

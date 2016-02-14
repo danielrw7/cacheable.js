@@ -9,10 +9,24 @@ function add(callback, a, b) {
 }
 var addC = cacheable(add);
 
-addC(console.log.bind(console), 1, 2)
+addC(console.log.bind(console), 1, 2);
 // => Adding 1 2
 // => 3
 
-addC(console.log.bind(console), 1, 2)
+addC(console.log.bind(console), 1, 2);
 // => 3
+
+
+function mult(a, b, callback) {
+  console.log('Multiplying:', a, b);
+  return callback(a * b);
+}
+var multC = cacheable(mult, 2); // The callback index is 2
+
+multC(2, 3, console.log.bind(console));
+// => Multiplying 2 3
+// => 6
+
+multC(2, 3, console.log.bind(console));
+// => 6
 ```

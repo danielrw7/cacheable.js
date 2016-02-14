@@ -1,16 +1,19 @@
 function cacheable(fn, callbackArgN) {
+  function toArr(args) {
+    return Array.prototype.slice.call(args);
+  }
   var _this = function cacheable() {
-    var args = Array.prototype.slice.call(arguments);
+    var args = toArr(arguments);
     var callback = args[callbackArgN];
-    var argsStr = args.map(JSON.stringify).join(',');
+    var key = args.map(JSON.stringify).join(',');
     function resultCallback() {
-      return callback.apply(this, _this._cache[argsStr]);
+      return callback.apply(this, _this._cache[key]);
     }
-    if (_this._cache[argsStr] !== undefined) {
+    if (_this._cache[key] !== undefined) {
       return resultCallback();
     } else {
       args[callbackArgN] = function(result) {
-        _this._cache[argsStr] = Array.prototype.slice.call(arguments);
+        _this._cache[key] = toArr(arguments);
         return resultCallback();
       };
       return fn.apply(this, args);

@@ -1,5 +1,5 @@
 # cacheable.js
-cacheable.js - Function wrapper for caching function results based on the arguments.
+[cacheable.js](https://github.com/danielrw7/cacheable.js/blob/master/cacheable.js) - Function wrapper for caching function results based on the function arguments.
 
 ## Usage
 ```javascript
